@@ -1,4 +1,4 @@
-# ECORE-JS-Validation-UI
+# ECORE-JS-Page-Down-Progress
 
 ## Summary
 
