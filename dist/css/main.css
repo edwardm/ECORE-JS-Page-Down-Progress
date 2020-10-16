@@ -3,18 +3,42 @@
  * @section Base Styles
  */
 /**
- * @section Base Styles
+ * @section Main Styles
  */
 /* line 5, src/sass/components/_style.scss */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
+  letter-spacing: -0.02rem;
+  color: #bbb;
+  background: #222;
 }
 
-/* line 10, src/sass/components/_style.scss */
-input,
-textarea,
-select,
-button {
-  font: inherit;
+/* line 14, src/sass/components/_style.scss */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+/* line 19, src/sass/components/_style.scss */
+h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* line 25, src/sass/components/_style.scss */
+hr {
+  border-color: #444;
+}
+
+/* line 29, src/sass/components/_style.scss */
+.navbar {
+  border-bottom: 1px solid #333;
+  background: #000;
+}
+
+/* line 34, src/sass/components/_style.scss */
+.jumbotron {
+  background: #111;
 }

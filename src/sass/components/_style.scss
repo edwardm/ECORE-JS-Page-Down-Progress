@@ -1,15 +1,36 @@
 /**
- * @section Base Styles
+ * @section Main Styles
  */
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter',
+        sans-serif;
     font-size: 0.9rem;
+    letter-spacing: -0.02rem;
+    color: #bbb;
+    background: #222;
 }
 
-input,
-textarea,
-select,
-button {
-    font: inherit;
+h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+hr {
+    border-color: #444;
+}
+
+.navbar {
+    border-bottom: 1px solid #333;
+    background: #000;
+}
+
+.jumbotron {
+    background: #111;
 }
