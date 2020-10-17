@@ -12,33 +12,111 @@ body {
   letter-spacing: -0.02rem;
   color: #bbb;
   background: #222;
+  margin-bottom: 10rem;
 }
 
-/* line 14, src/sass/components/_style.scss */
+/* line 15, src/sass/components/_style.scss */
 h1 {
   font-size: 2.5rem;
   font-weight: 500;
+  margin-top: 3rem;
 }
 
-/* line 19, src/sass/components/_style.scss */
+/* line 21, src/sass/components/_style.scss */
 h2 {
   font-size: 1.6rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-/* line 25, src/sass/components/_style.scss */
+/* line 27, src/sass/components/_style.scss */
 hr {
   border-color: #444;
 }
 
-/* line 29, src/sass/components/_style.scss */
+/* line 31, src/sass/components/_style.scss */
+.btn-secondary {
+  border-color: #444;
+  background-color: #444;
+}
+
+/* line 36, src/sass/components/_style.scss */
 .navbar {
   border-bottom: 1px solid #333;
   background: #000;
 }
 
-/* line 34, src/sass/components/_style.scss */
+/* line 41, src/sass/components/_style.scss */
 .jumbotron {
+  border-bottom: 1px solid #333;
   background: #111;
+}
+
+/* line 46, src/sass/components/_style.scss */
+.ecore-progress {
+  z-index: 1;
+  position: fixed;
+  display: block;
+}
+
+/* line 52, src/sass/components/_style.scss */
+.ecore-progress.ecore-progress-right {
+  top: 80px;
+  right: 30px;
+  bottom: 30px;
+  width: 15px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: #000;
+}
+
+/* line 62, src/sass/components/_style.scss */
+.ecore-progress > .ecore-progress-bg {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 25%;
+  background: blue;
+}
+
+/* line 72, src/sass/components/_style.scss */
+.ecore-progress > a {
+  position: absolute;
+  top: 25%;
+  display: block;
+  overflow: visible;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #999;
+  background: #666;
+}
+
+/* line 85, src/sass/components/_style.scss */
+.ecore-progress > a > span {
+  display: none;
+}
+
+/* line 89, src/sass/components/_style.scss */
+.ecore-progress > a:hover {
+  background: #fff;
+}
+
+/* line 93, src/sass/components/_style.scss */
+.ecore-progress > a:hover > span {
+  position: absolute;
+  top: -50%;
+  right: 20px;
+  display: block;
+  white-space: nowrap;
+  width: auto;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background-color: #000;
+  -webkit-box-shadow: #000;
+          box-shadow: #000;
 }

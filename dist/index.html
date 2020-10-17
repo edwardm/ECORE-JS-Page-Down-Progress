@@ -3,15 +3,15 @@
 
 <head>
 	<title>ECORE-JS-Page-Down-Progress</title>
-	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T
-		" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T
+		" crossorigin="anonymous"> -->
 	<!-- Project CSS -->
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap"
-		rel="stylesheet">
+	<!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap"
+		rel="stylesheet"> -->
+	<link rel="stylesheet" type="text/css" href="boostrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 
@@ -27,18 +27,18 @@
 		<div class="jumbotron">
 			<div class="container py-5">
 				<h1>A UI Element for Scrolldown Progress</h1>
-				<p>This is a template for a simple marketing or informational website. It includes a large callout
-					called a
-					jumbotron and three supporting pieces of content. Use it as a starting point to create something
-					more
-					unique.</p>
+				<p>This vanila JS plug-in shows a navigation element for a quick link guide to scroll to certain
+					sections on the page. In
+					addition, the navigation also displays a background div element that grows in dimension as the page
+					is scrolled through
+					in the viewport.</p>
 				<p><a class="btn btn-primary btn-lg" href="https://github.com/edwardm/ECORE-JS-Page-Down-Progress"
 						target="_blank" role="button">View on Github &raquo;</a></p>
 			</div>
 		</div>
 
 		<div class="container">
-			<div class="row py-5">
+			<div class="row py-5 ecore-section">
 				<div class="col-md-12">
 					<h2>Section 1</h2>
 					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
@@ -217,6 +217,17 @@
 			</div>
 			<hr>
 		</div> <!-- /container -->
+
+		<!-- <progress class="ecore-progress ecore-progress-right" /> -->
+
+		<!-- this nav element will automatically populate based on the main content being observed -->
+		<!-- the section container and section container title classes must be applied -->
+		<nav class="ecore-progress ecore-progress-right">
+			<div class="ecore-progress-bg"></div>
+			<a data-target="ecore-section" title="ECORE Title Here" aria-label="ECORE Title Here">
+				<span>ECORE Title Here</span>
+			</a>
+		</nav>
 
 	</main>
 
