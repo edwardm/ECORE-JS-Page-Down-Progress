@@ -1,14 +1,47 @@
 /*! project-name v0.0.1 | (c) 2020 YOUR NAME | MIT License | http://link-to-your-git-repo.com */
-console.log('ecore-page-down-progress file loaded');
+let viewportHeight;
+let viewportWidth;
+let ecoreSectionClass = "ecore-section";
+let ecoreTitleClass = "ecore-title";
+let ecoreProgressBarHeight;
+let ecoreSectionsCount;
 
-// heck for dimensions and placements
-const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+// check for dimensions and placements
+function ecoreDetections() {
+    viewportHeight = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0
+    );
+    viewportWidth = Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0
+    );
+    ecoreProgressBarHeight = document.querySelector(".ecore-progress")
+        .offsetHeight;
+    console.log(
+        "viewportHeight: " +
+            viewportHeight +
+            ", viewportWidth: " +
+            viewportWidth
+    );
+    console.log("ecoreProgressBarHeight: " + ecoreProgressBarHeight);
+}
+ecoreDetections();
+
+window.addEventListener("resize", (function () {
+    ecoreDetections();
+}));
+
+// function ecoreProgressNav()
+// - detect sections
+// - count sections
+// - append index -count to each class
+// - build out anchor html
+// --- data-target="ecore-section-0"
+// --- title="GRAB HTML FROM TITLE CLASS"
+// --- aria-label="GRAB HTML FROM TITLE CLASS"
 
 // declare vars
-// to-do, re-evaluate on window resize
-let ecoreProgressBarHeight = document.querySelector(".ecore-progress").offsetHeight;
-console.log(ecoreProgressBarHeight);
 
 // iterate through sections
 // - get count
