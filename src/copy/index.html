@@ -19,7 +19,7 @@
 
 	<header class="navbar navbar-expand-md fixed-top">
 		<a class="navbar-brand" href="#">ECORE-JS-Page-Down-Progress</a>
-		<p class="ml-auto">A plugin by <a href="https://edwardmargallo.com/" target="_blank">Edward
+		<span class="ml-auto">A plugin by <a href="https://edwardmargallo.com/" target="_blank">Edward
 				Margallo</a></p>
 	</header>
 
@@ -28,7 +28,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>A UI Element for Scrolldown Progress</h1>
-				<p>This vanila JS plug-in shows a navigation element for a quick link guide to scroll to certain
+				<p>This vanilla JS plug-in shows a navigation element for a quick link guide to scroll to certain
 					sections on the page. In addition, the navigation also displays a background div element that grows
 					in dimension as the page is scrolled through in the viewport. This UI plugin can be helpful for
 					lengthy pages that container many sections of content, such as
@@ -232,15 +232,19 @@
 		<!-- the section container and section container title classes must be applied -->
 		<nav class="ecore-progress ecore-progress-right">
 			<div class="ecore-progress-bg"></div>
-			<a data-target="ecore-section" title="ECORE Title Here" aria-label="ECORE Title Here">
+			<!-- <a data-target="ecore-section" title="ECORE Title Here" aria-label="ECORE Title Here">
 				<span>ECORE Title Here</span>
-			</a>
+			</a> -->
 		</nav>
 
 	</main>
 
 	<!-- Project Scripts -->
 	<script src="js/ecore-page-down-progress.js"></script>
+	<!-- <script>
+		ecoreSectionClass = ".ecore-section";
+		ecoreTitleClass = ".ecore-title";
+	</script> -->
 </body>
 
 </html>

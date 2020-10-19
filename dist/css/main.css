@@ -48,24 +48,30 @@ p a:hover {
 }
 
 /* line 38, src/sass/components/_style.scss */
+header span {
+  font-size: 0.75rem;
+  padding-top: 1rem;
+}
+
+/* line 43, src/sass/components/_style.scss */
 hr {
   margin: 10rem 0;
   border-color: #333;
 }
 
-/* line 43, src/sass/components/_style.scss */
+/* line 48, src/sass/components/_style.scss */
 .btn-secondary {
   border-color: #333;
   background-color: #333;
 }
 
-/* line 48, src/sass/components/_style.scss */
+/* line 53, src/sass/components/_style.scss */
 .navbar {
   border-bottom: 1px solid #333;
   background: #000;
 }
 
-/* line 53, src/sass/components/_style.scss */
+/* line 58, src/sass/components/_style.scss */
 .jumbotron {
   padding: 10rem 0;
   margin-bottom: 10rem;
@@ -74,7 +80,7 @@ hr {
   background: linear-gradient(135deg, black 0%, #111111 50%);
 }
 
-/* line 65, src/sass/components/_style.scss */
+/* line 70, src/sass/components/_style.scss */
 .ecore-progress {
   z-index: 1;
   position: fixed;
@@ -88,7 +94,7 @@ hr {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 79, src/sass/components/_style.scss */
+/* line 84, src/sass/components/_style.scss */
 .ecore-progress.ecore-progress-right {
   top: 80px;
   right: 30px;
@@ -99,7 +105,7 @@ hr {
   background: #000;
 }
 
-/* line 89, src/sass/components/_style.scss */
+/* line 94, src/sass/components/_style.scss */
 .ecore-progress > .ecore-progress-bg {
   z-index: 0;
   position: absolute;
@@ -111,22 +117,22 @@ hr {
   background: #0069d9;
 }
 
-/* line 100, src/sass/components/_style.scss */
+/* line 105, src/sass/components/_style.scss */
 .ecore-progress:hover {
   opacity: 1;
 }
 
-/* line 104, src/sass/components/_style.scss */
+/* line 109, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-right {
   border-color: #666;
 }
 
-/* line 107, src/sass/components/_style.scss */
+/* line 112, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-bg {
   background: #0078f8;
 }
 
-/* line 112, src/sass/components/_style.scss */
+/* line 117, src/sass/components/_style.scss */
 .ecore-progress > a {
   position: absolute;
   top: 24.5%;
@@ -141,17 +147,17 @@ hr {
   background: #333;
 }
 
-/* line 126, src/sass/components/_style.scss */
+/* line 131, src/sass/components/_style.scss */
 .ecore-progress > a > span {
   display: none;
 }
 
-/* line 130, src/sass/components/_style.scss */
+/* line 135, src/sass/components/_style.scss */
 .ecore-progress > a:hover {
   border-color: #fff;
 }
 
-/* line 134, src/sass/components/_style.scss */
+/* line 139, src/sass/components/_style.scss */
 .ecore-progress > a:hover > span {
   position: absolute;
   top: -150%;
