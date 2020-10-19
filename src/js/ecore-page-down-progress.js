@@ -1,7 +1,7 @@
 let viewportHeight;
 let viewportWidth;
-let ecoreSectionClass = "ecore-section";
-let ecoreTitleClass = "ecore-title";
+let ecoreSectionClass = ".ecore-section";
+let ecoreTitleClass = ".ecore-title";
 let ecoreProgressBarHeight;
 let ecoreSectionsCount;
 
@@ -24,6 +24,15 @@ function ecoreDetections() {
             viewportWidth
     );
     console.log("ecoreProgressBarHeight: " + ecoreProgressBarHeight);
+    ecoreSectionsCount = document.querySelectorAll(".ecore-section").length;
+    console.log("ecoreSectionsCount: " + ecoreSectionsCount);
+    document
+        .querySelectorAll(ecoreSectionClass)
+        .forEach((ecoreSection, index) => {
+            ecoreSection.classList.add("ecore-section-" + index);
+        });
+
+    // build the nav
 }
 ecoreDetections();
 

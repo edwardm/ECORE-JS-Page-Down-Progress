@@ -13,7 +13,7 @@
 /* line 5, src/sass/components/_style.scss */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #999;
   background: #222;
   margin-bottom: 10rem;
@@ -80,11 +80,15 @@ hr {
   position: fixed;
   display: block;
   opacity: 0.5;
+  transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -webkit-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
   -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* line 75, src/sass/components/_style.scss */
+/* line 79, src/sass/components/_style.scss */
 .ecore-progress.ecore-progress-right {
   top: 80px;
   right: 30px;
@@ -95,7 +99,7 @@ hr {
   background: #000;
 }
 
-/* line 85, src/sass/components/_style.scss */
+/* line 89, src/sass/components/_style.scss */
 .ecore-progress > .ecore-progress-bg {
   z-index: 0;
   position: absolute;
@@ -107,22 +111,22 @@ hr {
   background: #0069d9;
 }
 
-/* line 96, src/sass/components/_style.scss */
+/* line 100, src/sass/components/_style.scss */
 .ecore-progress:hover {
   opacity: 1;
 }
 
-/* line 100, src/sass/components/_style.scss */
+/* line 104, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-right {
   border-color: #666;
 }
 
-/* line 103, src/sass/components/_style.scss */
+/* line 107, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-bg {
   background: #0078f8;
 }
 
-/* line 108, src/sass/components/_style.scss */
+/* line 112, src/sass/components/_style.scss */
 .ecore-progress > a {
   position: absolute;
   top: 24.5%;
@@ -137,17 +141,17 @@ hr {
   background: #333;
 }
 
-/* line 122, src/sass/components/_style.scss */
+/* line 126, src/sass/components/_style.scss */
 .ecore-progress > a > span {
   display: none;
 }
 
-/* line 126, src/sass/components/_style.scss */
+/* line 130, src/sass/components/_style.scss */
 .ecore-progress > a:hover {
   border-color: #fff;
 }
 
-/* line 130, src/sass/components/_style.scss */
+/* line 134, src/sass/components/_style.scss */
 .ecore-progress > a:hover > span {
   position: absolute;
   top: -150%;
@@ -155,6 +159,7 @@ hr {
   display: block;
   white-space: nowrap;
   width: auto;
+  font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
   border-radius: 10px;
   border: 1px solid #333;
