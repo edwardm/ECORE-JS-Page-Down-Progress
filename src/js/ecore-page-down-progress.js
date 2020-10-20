@@ -73,6 +73,8 @@ window.addEventListener("resize", function () {
     ecoreDetections();
 });
 
+// NOTES ===================================
+
 // function ecoreProgressNav()
 // - detect sections
 // - count sections
@@ -82,7 +84,7 @@ window.addEventListener("resize", function () {
 // --- title="GRAB HTML FROM TITLE CLASS"
 // --- aria-label="GRAB HTML FROM TITLE CLASS"
 
-// declare vars
+// =========================================
 
 // iterate through sections
 // - get count
