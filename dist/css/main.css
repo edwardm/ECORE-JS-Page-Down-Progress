@@ -137,7 +137,7 @@ hr {
 /* line 118, src/sass/components/_style.scss */
 .ecore-progress > a {
   position: absolute;
-  top: 24.5%;
+  top: 0;
   left: -1px;
   display: block;
   overflow: visible;

@@ -1,9 +1,11 @@
 /* jshint esversion: 6 */
 
-let viewportHeight;
 let viewportWidth;
+let viewportHeight;
+let windowHeight;
 let ecoreProgressBarHeight;
 let ecoreSectionsCount;
+let ecoreSectionOffsetTop;
 let ecoreSectionClass = ".ecore-section";
 let ecoreTitleClass = ".ecore-title";
 let ecoreProgressClass = ".ecore-progress";
@@ -15,6 +17,7 @@ function ecoreDetections() {
         document.documentElement.clientHeight || 0,
         window.innerHeight || 0
     );
+    windowHeight = Math.max(document.documentElement.scrollHeight);
     viewportWidth = Math.max(
         document.documentElement.clientWidth || 0,
         window.innerWidth || 0
@@ -22,6 +25,8 @@ function ecoreDetections() {
     console.log(
         "viewportHeight: " +
             viewportHeight +
+            ", windowHeight: " +
+            windowHeight +
             ", viewportWidth: " +
             viewportWidth
     );
@@ -49,29 +54,50 @@ function ecoreDetections() {
     // nav anchor building
     const sectionArray = document.querySelectorAll(".ecore-section");
     for (const [i, el] of sectionArray.entries()) {
-        console.log(i, el);
+        // console.log(i, el);
 
         let navTarget = document.querySelector(ecoreProgressClass);
-        let navAnchor = navTarget.append(document.createElement("a"));
+        navTarget.append(document.createElement("a"));
+
+        ecoreSectionOffsetTop = el.offsetTop;
+        console.log(ecoreSectionOffsetTop);
+
+        document
+            .querySelectorAll(".ecore-progress > a:nth-child(" + [i + 1] + ")")
+            .forEach((ecoreProgressAnchor, index) => {
+                ecoreProgressAnchor.setAttribute(
+                    "data-ecore-section",
+                    "ecore-section-" + [i]
+                );
+                ecoreProgressAnchor.setAttribute(
+                    "aria-label",
+                    "ecore-section-" + [i]
+                );
+                ecoreProgressAnchor.innerHTML =
+                    "<span>ecore-section-" + [i] + "</span>";
+
+                ecoreProgressAnchor.style.top =
+                    ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) +
+                    "%"; // Math.pow to move the decimal point
+            });
     }
 
     // nav anchor attribute setting
-    document
-        .querySelectorAll(ecoreProgressClass + " > a")
-        .forEach((ecoreProgressAnchor, index) => {
-            // ecoreSection.classList.add("ecore-section-" + index);
-            ecoreProgressAnchor.setAttribute(
-                "data-ecore-section",
-                "ecore-section-" + index
-            );
-            ecoreProgressAnchor.setAttribute(
-                "aria-label",
-                "ecore-section-" + index
-            );
-            ecoreProgressAnchor.innerHTML =
-                "<span>ecore-section-" + index + "</span>"; // TO-DO dynamically fill this value from title
-            ecoreProgressAnchor.style.top = "100px"; // TO-DO dynamically fill this value
-        });
+    // document
+    //     .querySelectorAll(ecoreProgressClass + " > a")
+    //     .forEach((ecoreProgressAnchor, index) => {
+    //         ecoreProgressAnchor.setAttribute(
+    //             "data-ecore-section",
+    //             "ecore-section-" + index
+    //         );
+    //         ecoreProgressAnchor.setAttribute(
+    //             "aria-label",
+    //             "ecore-section-" + index
+    //         );
+    //         ecoreProgressAnchor.innerHTML =
+    //             "<span>ecore-section-" + index + "</span>"; // TO-DO dynamically fill this value from title
+    //         ecoreProgressAnchor.style.top = ecoreSectionOffsetTop; // TO-DO dynamically fill this value
+    //     });
 }
 ecoreDetections();
 
