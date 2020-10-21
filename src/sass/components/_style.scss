@@ -66,6 +66,10 @@ hr {
         rgba(0, 0, 0, 1) 0%,
         rgba(17, 17, 17, 1) 50%
     );
+
+    .container {
+        padding-right: 10%;
+    }
 }
 
 .ecore-progress {
@@ -92,7 +96,7 @@ hr {
         background: $black;
     }
 
-    &::before {
+    .ecore-progress-bg {
         content: " ";
         z-index: 0;
         position: absolute;
@@ -116,49 +120,49 @@ hr {
         }
     }
 
-    > a {
+    > nav {
         position: absolute;
         top: 0;
-        left: -1px;
-        display: block;
-        overflow: visible;
-        width: 10px;
-        height: 10px;
-        cursor: pointer;
-        // text-indent: -9999px;
-        border-radius: 10px;
-        border: 1px solid $grey-light;
-        background: $grey-dark;
+        right: 0;
+        bottom: 0;
+        left: 0;
 
-        > span {
-            display: none;
-        }
-
-        &:hover {
-            border-color: $white;
-        }
-
-        &:hover > span {
+        > a {
             position: absolute;
-            top: -150%;
-            right: 20px;
+            top: 0;
+            left: -1px;
             display: block;
-            white-space: nowrap;
-            width: auto;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.75rem;
+            overflow: visible;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+            // text-indent: -9999px;
             border-radius: 10px;
-            border: 1px solid $grey-dark;
-            background-color: $black;
-            box-shadow: $black;
-        }
+            border: 1px solid $grey-light;
+            background: $grey-dark;
 
-        // &:hover::before {
-        //     content: "ECORE Title Here";
-        //     position: absolute;
-        //     top: 0;
-        //     right: 0;
-        //     background: $white;
-        // }
+            > span {
+                display: none;
+            }
+
+            &:hover {
+                border-color: $white;
+            }
+
+            &:hover > span {
+                position: absolute;
+                top: -150%;
+                right: 20px;
+                display: block;
+                white-space: nowrap;
+                width: auto;
+                font-size: 0.75rem;
+                padding: 0.25rem 0.75rem;
+                border-radius: 10px;
+                border: 1px solid $grey-dark;
+                background-color: $black;
+                box-shadow: $black;
+            }
+        }
     }
 }

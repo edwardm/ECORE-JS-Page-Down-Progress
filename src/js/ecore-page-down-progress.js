@@ -10,6 +10,7 @@ let ecoreSectionOffsetTop;
 let ecoreSectionClass = ".ecore-section";
 let ecoreTitleClass = ".ecore-title";
 let ecoreProgressClass = ".ecore-progress";
+let ecoreProgressBarBg;
 
 // check for dimensions and placements
 function ecoreProgressNav() {
@@ -44,6 +45,10 @@ function ecoreProgressNav() {
                     document.body
                 ).scrollTop;
             // console.log("windowScrollOffset: " + windowScrollOffset);
+
+            ecoreProgressBarBg = document.querySelector(".ecore-progress-bg");
+            ecoreProgressBarBg.style.height =
+                windowScrollOffset / windowHeight / Math.pow(10, -2) + 4 + "%";
         },
         false
     );
@@ -73,9 +78,14 @@ function ecoreProgressNav() {
     for (const [i, el] of sectionArray.entries()) {
         // console.log(i, el);
 
-        let navTarget = document.querySelector(ecoreProgressClass);
+        // build the anchor
+        let navTarget = document.querySelector(ecoreProgressClass + " > nav");
         navTarget.append(document.createElement("a"));
 
+        // get the section title
+        let sectionTitle = el.querySelector(ecoreTitleClass).innerHTML;
+
+        // get the section y offset
         ecoreSectionOffsetTop = el.offsetTop;
         console.log(
             "data-ecore-section-" +
@@ -84,9 +94,11 @@ function ecoreProgressNav() {
                 ecoreSectionOffsetTop
         );
 
-        // nav anchor attribute setting and inline css
+        // nav anchor setting attributes and inline css
         document
-            .querySelectorAll(".ecore-progress > a:nth-child(" + [i + 1] + ")")
+            .querySelectorAll(
+                ".ecore-progress > nav > a:nth-child(" + [i + 1] + ")"
+            )
             .forEach((ecoreProgressAnchor) => {
                 ecoreProgressAnchor.setAttribute(
                     "data-ecore-section",
@@ -94,14 +106,15 @@ function ecoreProgressNav() {
                 );
                 ecoreProgressAnchor.setAttribute(
                     "aria-label",
-                    "ecore-section-" + [i + 1] // TO-DO set actual title
+                    sectionTitle
+                    // "ecore-section-" + [i + 1] // TO-DO set actual title
                 );
                 ecoreProgressAnchor.setAttribute(
                     "data-offset",
                     ecoreSectionOffsetTop
                 );
                 ecoreProgressAnchor.innerHTML =
-                    "<span>ecore-section-" + [i + 1] + "</span>";
+                    "<span>" + sectionTitle + "</span>";
                 ecoreProgressAnchor.style.top =
                     ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) +
                     "%"; // Math.pow to move the decimal point

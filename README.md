@@ -8,7 +8,7 @@ The nav element has two flavors of styling: attached to the top of the page, or 
 
 ## What's so special?
 
-TO-DO: This plug-in can show the navigation progress bar in either horizontal or vertical format. The navigation also automatically build itself. Meaning the user just needs to define the "sections" via the unique class selector, and the plug-in will build out the UI on it's own.
+The navigation and progress elements will automatically build itself out. Meaning the user just needs to define the "sections" via the unique class selector, and the JS will detect these objects, calculate measurements, build DOM elements and construct the UI on it's own.
 
 And of course, the user can style the look and placement of the bar as needed. These can be a helpful tool for documentation websites, or any pages containing many chapters/sections.
 
@@ -24,8 +24,9 @@ $ npm install
 
 ## Notes
 
--   Ability to display in either horionztal format or vertical format
--   Better tooltip support for the navigation links, may incorporate Boostrap tooltip with Popper JS
+-   TO-DO: Bug when window resizes, on of the anchors loses offset positioning
+-   TO-DO: This plug-in can show the navigation progress bar in either horizontal or vertical format.
+-   TO-DO: Better tooltip support for the navigation links, may incorporate Boostrap tooltip with Popper JS for viewport edge detection and placement
 
 ## License
 
