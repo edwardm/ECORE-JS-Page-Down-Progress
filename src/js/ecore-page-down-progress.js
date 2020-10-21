@@ -46,25 +46,32 @@ function ecoreDetections() {
             );
         });
 
-    // build the nav
+    // nav anchor building
     const sectionArray = document.querySelectorAll(".ecore-section");
     for (const [i, el] of sectionArray.entries()) {
         console.log(i, el);
 
-        let navAnchor = document
-            .querySelector(ecoreProgressClass)
-            .append(document.createElement("a"));
-        // console.log(navAnchor);
-
-        // navAnchor.setAttribute("data-target", "ecore-section-" + i);
-
-        // document
-        //     // .querySelector(
-        //     //     ecoreProgressClass + " > a:nth-child(" + (i + 1) + ")"
-        //     // )
-        //     .querySelector(ecoreProgressClass)
-        //     .setAttribute("data-target", "ecore-section-" + i);
+        let navTarget = document.querySelector(ecoreProgressClass);
+        let navAnchor = navTarget.append(document.createElement("a"));
     }
+
+    // nav anchor attribute setting
+    document
+        .querySelectorAll(ecoreProgressClass + " > a")
+        .forEach((ecoreProgressAnchor, index) => {
+            // ecoreSection.classList.add("ecore-section-" + index);
+            ecoreProgressAnchor.setAttribute(
+                "data-ecore-section",
+                "ecore-section-" + index
+            );
+            ecoreProgressAnchor.setAttribute(
+                "aria-label",
+                "ecore-section-" + index
+            );
+            ecoreProgressAnchor.innerHTML =
+                "<span>ecore-section-" + index + "</span>"; // TO-DO dynamically fill this value from title
+            ecoreProgressAnchor.style.top = "100px"; // TO-DO dynamically fill this value
+        });
 }
 ecoreDetections();
 

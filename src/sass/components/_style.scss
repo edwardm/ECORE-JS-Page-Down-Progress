@@ -51,8 +51,9 @@ hr {
 }
 
 .navbar {
-    border-bottom: 1px solid $grey-dark;
+    border-bottom: 1px solid $grey-very-dark;
     background: $black;
+    box-shadow: 0 0 1rem $black;
 }
 
 .jumbotron {
