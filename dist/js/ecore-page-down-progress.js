@@ -4,6 +4,7 @@
 let viewportWidth;
 let viewportHeight;
 let windowHeight;
+let windowScrollOffset;
 let ecoreProgressBarHeight;
 let ecoreSectionsCount;
 let ecoreSectionOffsetTop;
@@ -12,7 +13,7 @@ let ecoreTitleClass = ".ecore-title";
 let ecoreProgressClass = ".ecore-progress";
 
 // check for dimensions and placements
-function ecoreDetections() {
+function ecoreProgressNav() {
     // detect viewport dimensions
     viewportHeight = Math.max(
         document.documentElement.clientHeight || 0,
@@ -32,8 +33,24 @@ function ecoreDetections() {
             viewportWidth
     );
 
+    // detect vertical scrolling progress
+    window.addEventListener(
+        "scroll",
+        (function () {
+            windowScrollOffset =
+                window.pageYOffset ||
+                (
+                    document.documentElement ||
+                    document.body.parentNode ||
+                    document.body
+                ).scrollTop;
+            // console.log("windowScrollOffset: " + windowScrollOffset);
+        }),
+        false
+    );
+
     // detect progress bar height, if vertical
-    ecoreProgressBarHeight = document.querySelector(".ecore-progress")
+    ecoreProgressBarHeight = document.querySelector(ecoreProgressClass)
         .offsetHeight;
     console.log("ecoreProgressBarHeight: " + ecoreProgressBarHeight);
 
@@ -61,74 +78,54 @@ function ecoreDetections() {
         navTarget.append(document.createElement("a"));
 
         ecoreSectionOffsetTop = el.offsetTop;
-        console.log(ecoreSectionOffsetTop);
+        console.log(
+            "data-ecore-section-" +
+                [i + 1] +
+                " top offset: " +
+                ecoreSectionOffsetTop
+        );
 
+        // nav anchor attribute setting and inline css
         document
             .querySelectorAll(".ecore-progress > a:nth-child(" + [i + 1] + ")")
-            .forEach((ecoreProgressAnchor, index) => {
+            .forEach((ecoreProgressAnchor) => {
                 ecoreProgressAnchor.setAttribute(
                     "data-ecore-section",
-                    "ecore-section-" + [i]
+                    "ecore-section-" + [i + 1]
                 );
                 ecoreProgressAnchor.setAttribute(
                     "aria-label",
-                    "ecore-section-" + [i]
+                    "ecore-section-" + [i + 1] // TO-DO set actual title
+                );
+                ecoreProgressAnchor.setAttribute(
+                    "data-offset",
+                    ecoreSectionOffsetTop
                 );
                 ecoreProgressAnchor.innerHTML =
-                    "<span>ecore-section-" + [i] + "</span>";
-
+                    "<span>ecore-section-" + [i + 1] + "</span>";
                 ecoreProgressAnchor.style.top =
                     ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) +
                     "%"; // Math.pow to move the decimal point
+                ecoreProgressAnchor.addEventListener("click", (e) => {
+                    console.log(
+                        ecoreProgressAnchor.getAttribute("data-ecore-section"),
+                        ecoreProgressAnchor.getAttribute("data-offset")
+                    );
+                    window.scrollTo({
+                        top:
+                            ecoreProgressAnchor.getAttribute("data-offset") -
+                            150,
+                        behavior: "smooth",
+                    });
+                });
             });
     }
-
-    // nav anchor attribute setting
-    // document
-    //     .querySelectorAll(ecoreProgressClass + " > a")
-    //     .forEach((ecoreProgressAnchor, index) => {
-    //         ecoreProgressAnchor.setAttribute(
-    //             "data-ecore-section",
-    //             "ecore-section-" + index
-    //         );
-    //         ecoreProgressAnchor.setAttribute(
-    //             "aria-label",
-    //             "ecore-section-" + index
-    //         );
-    //         ecoreProgressAnchor.innerHTML =
-    //             "<span>ecore-section-" + index + "</span>"; // TO-DO dynamically fill this value from title
-    //         ecoreProgressAnchor.style.top = ecoreSectionOffsetTop; // TO-DO dynamically fill this value
-    //     });
 }
-ecoreDetections();
+ecoreProgressNav();
 
 // recalculation needed for the progress bar UI
+// specifically viewport and document dimensions
+// as well as inline styling for the nav
 window.addEventListener("resize", (function () {
-    ecoreDetections();
+    ecoreProgressNav();
 }));
-
-// NOTES ===================================
-
-// function ecoreProgressNav()
-// - detect sections
-// - count sections
-// - append index -count to each class
-// - build out anchor html
-// --- data-target="ecore-section-0"
-// --- title="GRAB HTML FROM TITLE CLASS"
-// --- aria-label="GRAB HTML FROM TITLE CLASS"
-
-// =========================================
-
-// iterate through sections
-// - get count
-// - get title
-// - build nav child nodes
-
-// set nav action items
-// - on click, go to section
-// - on hover, show title
-
-// toggle tooltip
-// - on hover, show tooltip/pseudo element
-// - should show title value

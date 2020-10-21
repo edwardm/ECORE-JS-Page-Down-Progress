@@ -223,15 +223,11 @@
 			<hr>
 		</div>
 
-		<!-- <progress class="ecore-progress ecore-progress-right" /> -->
-
 		<!-- this nav element will automatically populate based on the main content being observed -->
 		<!-- the section container and section container title classes must be applied -->
+		<!-- don't put extra syntax inside, as the indexing of items will throw the nth child off -->
 		<nav class="ecore-progress ecore-progress-right">
-			<div class="ecore-progress-bg"></div>
-			<!-- <a data-target="ecore-section" title="ECORE Title Here" aria-label="ECORE Title Here">
-				<span>ECORE Title Here</span>
-			</a> -->
+			<!-- <div class="ecore-progress-bg"></div> -->
 		</nav>
 
 	</main>
@@ -239,6 +235,7 @@
 	<!-- Project Scripts -->
 	<script src="js/ecore-page-down-progress.js"></script>
 	<!-- <script>
+		// var overrides for custom classes
 		ecoreSectionClass = ".ecore-section";
 		ecoreTitleClass = ".ecore-title";
 	</script> -->

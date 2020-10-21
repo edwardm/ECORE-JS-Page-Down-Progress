@@ -72,7 +72,7 @@ hr {
     z-index: 1;
     position: fixed;
     display: block;
-    opacity: 0.5;
+    opacity: 0.4;
     transition: opacity 0.5s ease-out;
     -moz-transition: opacity 0.5s ease-out;
     -webkit-transition: opacity 0.5s ease-out;
@@ -92,7 +92,8 @@ hr {
         background: $black;
     }
 
-    > .ecore-progress-bg {
+    &::before {
+        content: " ";
         z-index: 0;
         position: absolute;
         top: 2px;
