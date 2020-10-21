@@ -15,7 +15,7 @@ And of course, the user can style the look and placement of the bar as needed. T
 ## Getting Started
 
 ```
-$ git clone ...
+$ git clone https://github.com/edwardm/ECORE-JS-Page-Down-Progress.git
 ```
 
 ```npm
