@@ -12,6 +12,7 @@ let ecoreSectionClass = ".ecore-section";
 let ecoreTitleClass = ".ecore-title";
 let ecoreProgressClass = ".ecore-progress";
 let ecoreProgressBarBg;
+let ecoreNavTarget;
 
 // check for dimensions and placements
 function ecoreProgressNav() {
@@ -80,8 +81,8 @@ function ecoreProgressNav() {
         // console.log(i, el);
 
         // build the anchor
-        let navTarget = document.querySelector(ecoreProgressClass + " > nav");
-        navTarget.append(document.createElement("a"));
+        ecoreNavTarget = document.querySelector(ecoreProgressClass + " > nav");
+        ecoreNavTarget.append(document.createElement("a"));
 
         // get the section title
         let sectionTitle = el.querySelector(ecoreTitleClass).innerHTML;
@@ -140,5 +141,9 @@ ecoreProgressNav();
 // specifically viewport and document dimensions
 // as well as inline styling for the nav
 window.addEventListener("resize", (function () {
+    // ecoreNavTarget = document.querySelectorAll(
+    //     ecoreProgressClass + " > nav > a"
+    // );
+    // ecoreNavTarget.parentNode.removeChild(ecoreNavTarget);
     ecoreProgressNav();
 }));

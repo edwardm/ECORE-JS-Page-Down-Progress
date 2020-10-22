@@ -6,7 +6,7 @@
  * @section Variable Styles
  */
 /* colors */
-/* extend */
+/* mixins and extends */
 /**
  * @section Main Styles
  */
@@ -92,16 +92,18 @@ hr {
   z-index: 1;
   position: fixed;
   display: block;
-  opacity: 0.4;
+  opacity: 0.5;
   transition: opacity 0.5s ease-out;
   -moz-transition: opacity 0.5s ease-out;
   -webkit-transition: opacity 0.5s ease-out;
   -o-transition: opacity 0.5s ease-out;
   -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  /* make all the titles show when the progress bar 
+       is hovered on, for better usability */
 }
 
-/* line 89, src/sass/components/_style.scss */
+/* line 88, src/sass/components/_style.scss */
 .ecore-progress.ecore-progress-right {
   top: 80px;
   right: 30px;
@@ -112,7 +114,7 @@ hr {
   background: #000;
 }
 
-/* line 99, src/sass/components/_style.scss */
+/* line 98, src/sass/components/_style.scss */
 .ecore-progress .ecore-progress-bg {
   content: " ";
   z-index: 0;
@@ -125,22 +127,45 @@ hr {
   background: #0069d9;
 }
 
-/* line 111, src/sass/components/_style.scss */
+/* line 110, src/sass/components/_style.scss */
 .ecore-progress:hover {
   opacity: 1;
 }
 
-/* line 115, src/sass/components/_style.scss */
+/* line 114, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-right {
   border-color: #666;
 }
 
-/* line 118, src/sass/components/_style.scss */
+/* line 117, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-bg {
   background: #0078f8;
 }
 
-/* line 123, src/sass/components/_style.scss */
+/* line 124, src/sass/components/_style.scss */
+.ecore-progress:hover > nav > a > span {
+  display: block;
+  opacity: 0.6;
+  position: absolute;
+  z-index: -1;
+  top: -125%;
+  right: 15px;
+  white-space: nowrap;
+  width: auto;
+  font-size: 0.75rem;
+  padding: 0.25rem 1rem 0.25rem 0.75rem;
+  border-radius: 30px 30px 30px 30px;
+  border: 1px solid #333;
+  background-color: #000;
+  -webkit-box-shadow: #000;
+          box-shadow: #000;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  /* in variables */
+  border-color: #333;
+}
+
+/* line 130, src/sass/components/_style.scss */
 .ecore-progress > nav {
   position: absolute;
   top: 0;
@@ -149,7 +174,7 @@ hr {
   left: 0;
 }
 
-/* line 130, src/sass/components/_style.scss */
+/* line 137, src/sass/components/_style.scss */
 .ecore-progress > nav > a {
   position: absolute;
   top: 0;
@@ -164,29 +189,37 @@ hr {
   background: #333;
 }
 
-/* line 144, src/sass/components/_style.scss */
+/* line 151, src/sass/components/_style.scss */
 .ecore-progress > nav > a > span {
   display: none;
 }
 
-/* line 148, src/sass/components/_style.scss */
+/* line 155, src/sass/components/_style.scss */
 .ecore-progress > nav > a:hover {
   border-color: #fff;
 }
 
-/* line 152, src/sass/components/_style.scss */
+/* line 159, src/sass/components/_style.scss */
 .ecore-progress > nav > a:hover > span {
-  position: absolute;
-  top: -150%;
-  right: 20px;
   display: block;
+  opacity: 0.6;
+  position: absolute;
+  z-index: -1;
+  top: -125%;
+  right: 15px;
   white-space: nowrap;
   width: auto;
   font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 10px;
+  padding: 0.25rem 1rem 0.25rem 0.75rem;
+  border-radius: 30px 30px 30px 30px;
   border: 1px solid #333;
   background-color: #000;
   -webkit-box-shadow: #000;
           box-shadow: #000;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  /* in variables */
+  opacity: 1;
+  color: #fff;
+  border: 1px solid #999;
 }

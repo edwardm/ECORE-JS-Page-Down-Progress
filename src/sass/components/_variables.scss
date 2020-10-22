@@ -15,4 +15,21 @@ $white: #fff;
 $blue-light: #0078f8;
 $blue-dark: #0069d9;
 
-/* extend */
+/* mixins and extends */
+
+@mixin nav-a-span-hover {
+    opacity: 0.6;
+    position: absolute;
+    z-index: -1;
+    top: -125%;
+    right: 15px;
+    white-space: nowrap;
+    width: auto;
+    font-size: 0.75rem;
+    padding: 0.25rem 1rem 0.25rem 0.75rem;
+    border-radius: 30px 30px 30px 30px;
+    border: 1px solid $grey-dark;
+    background-color: $black;
+    box-shadow: $black;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
