@@ -14,7 +14,9 @@ let ecoreProgressClass = ".ecore-progress";
 let ecoreProgressBarBg;
 let ecoreNavTarget;
 
-// check for dimensions and placements
+// the main function
+// check for dimensions, placements and scroll listener
+// build out the UI
 function ecoreProgressNav() {
     // detect viewport dimensions
     viewportHeight = Math.max(
@@ -36,13 +38,9 @@ function ecoreProgressNav() {
     );
 
     // detect scrolling for the ecoreProgressBar() function
-    window.addEventListener(
-        "scroll",
-        (function () {
-            ecoreProgressBar();
-        }),
-        false
-    );
+    window.addEventListener("scroll", (function () {
+        ecoreProgressBar();
+    }));
 
     // detect progress bar height, if vertical
     ecoreProgressBarHeight = document.querySelector(ecoreProgressClass)
