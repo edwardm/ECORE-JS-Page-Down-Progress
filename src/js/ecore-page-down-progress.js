@@ -34,22 +34,11 @@ function ecoreProgressNav() {
             viewportWidth
     );
 
-    // detect vertical scrolling progress
+    // detect scrolling for the ecoreProgressBar() function
     window.addEventListener(
         "scroll",
         function () {
-            windowScrollOffset =
-                window.pageYOffset ||
-                (
-                    document.documentElement ||
-                    document.body.parentNode ||
-                    document.body
-                ).scrollTop;
-            // console.log("windowScrollOffset: " + windowScrollOffset);
-
-            ecoreProgressBarBg = document.querySelector(".ecore-progress-bg");
-            ecoreProgressBarBg.style.height =
-                windowScrollOffset / windowHeight / Math.pow(10, -2) + 4 + "%";
+            ecoreProgressBar();
         },
         false
     );
@@ -136,6 +125,21 @@ function ecoreProgressNav() {
 }
 ecoreProgressNav();
 
+// apply progress bar bg, on it's own since it
+// needs to be called on resize and scroll events
+function ecoreProgressBar() {
+    windowScrollOffset =
+        window.pageYOffset ||
+        (document.documentElement || document.body.parentNode || document.body)
+            .scrollTop;
+    // console.log("windowScrollOffset: " + windowScrollOffset);
+
+    ecoreProgressBarBg = document.querySelector(".ecore-progress-bg");
+    ecoreProgressBarBg.style.height =
+        windowScrollOffset / windowHeight / Math.pow(10, -2) + 4 + "%";
+}
+ecoreProgressBar();
+
 // recalculation needed for the progress bar UI
 // specifically viewport and document dimensions
 // as well as inline styling for the nav
@@ -145,4 +149,5 @@ window.addEventListener("resize", function () {
     // );
     // ecoreNavTarget.parentNode.removeChild(ecoreNavTarget);
     ecoreProgressNav();
+    ecoreProgressBar();
 });
