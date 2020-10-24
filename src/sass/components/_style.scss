@@ -60,11 +60,9 @@ hr {
     margin-bottom: 10rem;
     border-bottom: 1px solid $grey-dark;
     background: rgb(0, 0, 0);
-    background: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(17, 17, 17, 1) 50%
-    );
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(17, 17, 17, 1) 50%);
 
     .container {
         padding-right: 10%;
@@ -109,30 +107,32 @@ hr {
     &:hover {
         opacity: 1;
 
-        > .ecore-progress-right {
+        >.ecore-progress-right {
             border-color: $grey-medium;
         }
-        > .ecore-progress-bg {
+
+        >.ecore-progress-bg {
             background: $blue-light;
         }
     }
 
     /* make all the titles show when the progress bar 
        is hovered on, for better usability */
-    &:hover > nav > a > span {
+    &:hover>nav>a>span {
         display: block;
-        @include nav-a-span-hover; /* in variables */
+        @include nav-a-span-hover;
+        /* in variables */
         border-color: $grey-dark;
     }
 
-    > nav {
+    >nav {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
 
-        > a {
+        >a {
             position: absolute;
             top: 0;
             left: -1px;
@@ -146,7 +146,7 @@ hr {
             border: 1px solid $grey-light;
             background: $grey-dark;
 
-            > span {
+            >span {
                 display: none;
             }
 
@@ -154,9 +154,10 @@ hr {
                 border-color: $white;
             }
 
-            &:hover > span {
+            &:hover>span {
                 display: block;
-                @include nav-a-span-hover; /* in variables */
+                @include nav-a-span-hover;
+                /* in variables */
                 opacity: 1;
                 color: $white;
                 border: 1px solid $grey-light;

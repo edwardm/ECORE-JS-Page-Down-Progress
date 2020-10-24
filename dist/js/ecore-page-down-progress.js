@@ -13,6 +13,7 @@ let ecoreTitleClass = ".ecore-title";
 let ecoreProgressClass = ".ecore-progress";
 let ecoreProgressBarBg;
 let ecoreNavTarget;
+let ecoreSectionTitle;
 
 // the main function
 // check for dimensions, placements and scroll listener
@@ -72,7 +73,7 @@ function ecoreProgressNav() {
         ecoreNavTarget.append(document.createElement("a"));
 
         // get the section title
-        let sectionTitle = el.querySelector(ecoreTitleClass).innerHTML;
+        ecoreSectionTitle = el.querySelector(ecoreTitleClass).innerHTML;
 
         // get the section y offset
         ecoreSectionOffsetTop = el.offsetTop;
@@ -83,43 +84,14 @@ function ecoreProgressNav() {
                 ecoreSectionOffsetTop
         );
 
-        // nav anchor setting attributes and inline css
-        document
-            .querySelectorAll(
+        // call the build nav function
+        // apply anchor attributes and inline css
+        ecoreBuildNav(
+            i,
+            document.querySelectorAll(
                 ".ecore-progress > nav > a:nth-child(" + [i + 1] + ")"
             )
-            .forEach((ecoreProgressAnchor) => {
-                ecoreProgressAnchor.setAttribute(
-                    "data-ecore-section",
-                    "ecore-section-" + [i + 1]
-                );
-                ecoreProgressAnchor.setAttribute(
-                    "aria-label",
-                    sectionTitle
-                    // "ecore-section-" + [i + 1] // TO-DO set actual title
-                );
-                ecoreProgressAnchor.setAttribute(
-                    "data-offset",
-                    ecoreSectionOffsetTop
-                );
-                ecoreProgressAnchor.innerHTML =
-                    "<span>" + sectionTitle + "</span>";
-                ecoreProgressAnchor.style.top =
-                    ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) +
-                    "%"; // Math.pow to move the decimal point
-                ecoreProgressAnchor.addEventListener("click", (e) => {
-                    console.log(
-                        ecoreProgressAnchor.getAttribute("data-ecore-section"),
-                        ecoreProgressAnchor.getAttribute("data-offset")
-                    );
-                    window.scrollTo({
-                        top:
-                            ecoreProgressAnchor.getAttribute("data-offset") -
-                            150,
-                        behavior: "smooth",
-                    });
-                });
-            });
+        );
     }
 }
 ecoreProgressNav();
@@ -138,6 +110,36 @@ function ecoreProgressBar() {
         windowScrollOffset / windowHeight / Math.pow(10, -2) + 4 + "%";
 }
 ecoreProgressBar();
+
+// build the nav, pass index and target element
+function ecoreBuildNav(i, el) {
+    el.forEach((ecoreProgressAnchor) => {
+        ecoreProgressAnchor.setAttribute(
+            "data-ecore-section",
+            "ecore-section-" + [i + 1]
+        );
+        ecoreProgressAnchor.setAttribute(
+            "aria-label",
+            ecoreSectionTitle
+            // "ecore-section-" + [i + 1] // TO-DO set actual title
+        );
+        ecoreProgressAnchor.setAttribute("data-offset", ecoreSectionOffsetTop);
+        ecoreProgressAnchor.innerHTML =
+            "<span>" + ecoreSectionTitle + "</span>";
+        ecoreProgressAnchor.style.top =
+            ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) + "%"; // Math.pow to move the decimal point
+        ecoreProgressAnchor.addEventListener("click", (e) => {
+            console.log(
+                ecoreProgressAnchor.getAttribute("data-ecore-section"),
+                ecoreProgressAnchor.getAttribute("data-offset")
+            );
+            window.scrollTo({
+                top: ecoreProgressAnchor.getAttribute("data-offset") - 150,
+                behavior: "smooth",
+            });
+        });
+    });
+}
 
 // recalculation needed for the progress bar UI
 // specifically viewport and document dimensions
