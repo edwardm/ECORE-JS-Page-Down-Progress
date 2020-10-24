@@ -55,7 +55,6 @@ function ecoreProgressNav() {
     document
         .querySelectorAll(ecoreSectionClass)
         .forEach((ecoreSection, index) => {
-            // ecoreSection.classList.add("ecore-section-" + index);
             ecoreSection.setAttribute(
                 "data-ecore-section",
                 "ecore-section-" + index
@@ -83,7 +82,7 @@ function ecoreProgressNav() {
                 ecoreSectionOffsetTop
         );
 
-        // call the build nav function
+        // call the build nav function, passing index and selector
         // apply anchor attributes and inline css
         ecoreBuildNav(
             i,
@@ -141,13 +140,7 @@ function ecoreBuildNav(i, el) {
 }
 
 // recalculation needed for the progress bar UI
-// specifically viewport and document dimensions
-// as well as inline styling for the nav
 window.addEventListener("resize", function () {
-    // ecoreNavTarget = document.querySelectorAll(
-    //     ecoreProgressClass + " > nav > a"
-    // );
-    // ecoreNavTarget.parentNode.removeChild(ecoreNavTarget);
     ecoreProgressNav();
     ecoreProgressBar();
 });

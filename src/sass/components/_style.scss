@@ -120,8 +120,7 @@ hr {
        is hovered on, for better usability */
     &:hover>nav>a>span {
         display: block;
-        @include nav-a-span-hover;
-        /* in variables */
+        @include nav-a-span-hover; /* in variables */
         border-color: $grey-dark;
     }
 
@@ -156,8 +155,7 @@ hr {
 
             &:hover>span {
                 display: block;
-                @include nav-a-span-hover;
-                /* in variables */
+                @include nav-a-span-hover; /* in variables */
                 opacity: 1;
                 color: $white;
                 border: 1px solid $grey-light;
