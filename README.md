@@ -24,8 +24,9 @@ $ npm install
 
 ## Notes
 
--   TO-DO: Bug when window resizes, on of the anchors loses offset positioning
--   TO-DO: This plug-in can show the navigation progress bar in either horizontal or vertical format.
+-   TO-DO: Bug when window resizes, one of the anchors loses offset positioning
+-   TO-DO: Styling support for the navigation progress bar in horizontal format
+-   TO-DO: Better styling support for the navigation progress bar for mobile devices
 -   TO-DO: Better tooltip support for the navigation links, may incorporate Boostrap tooltip with Popper JS for viewport edge detection and placement
 
 ## License
