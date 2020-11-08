@@ -22,50 +22,68 @@ body {
 /* line 13, src/sass/components/_style.scss */
 h1 {
   color: #fff;
+  background: -webkit-linear-gradient(left, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 2rem;
   font-weight: 500;
   letter-spacing: -0.01rem;
   margin-top: 3rem;
 }
 
-/* line 21, src/sass/components/_style.scss */
+/* line 24, src/sass/components/_style.scss */
 h2 {
   color: #fff;
+  background: -webkit-linear-gradient(left, #fff, #999);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: -0.01rem;
 }
 
-/* line 28, src/sass/components/_style.scss */
+/* line 34, src/sass/components/_style.scss */
 p a {
   color: #fff;
 }
 
-/* line 31, src/sass/components/_style.scss */
+/* line 37, src/sass/components/_style.scss */
 p a:hover {
   text-decoration: none;
   color: #999;
 }
 
-/* line 37, src/sass/components/_style.scss */
+/* line 44, src/sass/components/_style.scss */
 header span {
   font-size: 0.75rem;
   padding-top: 0.3rem;
 }
 
-/* line 42, src/sass/components/_style.scss */
+/* line 49, src/sass/components/_style.scss */
+header a {
+  background: -webkit-linear-gradient(left, #3898ff, #0069d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* line 56, src/sass/components/_style.scss */
 hr {
   margin: 10rem 0;
   border-color: #333;
 }
 
-/* line 47, src/sass/components/_style.scss */
-.btn-secondary {
+/* line 62, src/sass/components/_style.scss */
+.btn.btn-primary {
+  background: -webkit-linear-gradient(left, #3898ff, #0069d9);
+}
+
+/* line 67, src/sass/components/_style.scss */
+.btn.btn-secondary {
   border-color: #333;
   background-color: #333;
 }
 
-/* line 52, src/sass/components/_style.scss */
+/* line 73, src/sass/components/_style.scss */
 .navbar {
   border-bottom: 1px solid #222;
   background: #000;
@@ -73,7 +91,7 @@ hr {
           box-shadow: 0 0 1rem #000;
 }
 
-/* line 58, src/sass/components/_style.scss */
+/* line 79, src/sass/components/_style.scss */
 .jumbotron {
   padding: 10rem 0;
   margin-bottom: 10rem;
@@ -82,12 +100,12 @@ hr {
   background: linear-gradient(135deg, black 0%, #111111 50%);
 }
 
-/* line 69, src/sass/components/_style.scss */
+/* line 90, src/sass/components/_style.scss */
 .jumbotron .container {
   padding-right: 10%;
 }
 
-/* line 74, src/sass/components/_style.scss */
+/* line 95, src/sass/components/_style.scss */
 .ecore-progress {
   z-index: 1;
   position: fixed;
@@ -103,7 +121,7 @@ hr {
        is hovered on, for better usability */
 }
 
-/* line 87, src/sass/components/_style.scss */
+/* line 108, src/sass/components/_style.scss */
 .ecore-progress.ecore-progress-right {
   top: 80px;
   right: 30px;
@@ -114,7 +132,7 @@ hr {
   background: #000;
 }
 
-/* line 97, src/sass/components/_style.scss */
+/* line 118, src/sass/components/_style.scss */
 .ecore-progress .ecore-progress-bg {
   content: " ";
   z-index: 0;
@@ -127,22 +145,22 @@ hr {
   background: #0069d9;
 }
 
-/* line 109, src/sass/components/_style.scss */
+/* line 130, src/sass/components/_style.scss */
 .ecore-progress:hover {
   opacity: 1;
 }
 
-/* line 112, src/sass/components/_style.scss */
+/* line 133, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-right {
   border-color: #666;
 }
 
-/* line 116, src/sass/components/_style.scss */
+/* line 137, src/sass/components/_style.scss */
 .ecore-progress:hover > .ecore-progress-bg {
   background: #0078f8;
 }
 
-/* line 123, src/sass/components/_style.scss */
+/* line 144, src/sass/components/_style.scss */
 .ecore-progress:hover > nav > a > span {
   display: block;
   opacity: 0.6;
@@ -165,7 +183,7 @@ hr {
   border-color: #333;
 }
 
-/* line 129, src/sass/components/_style.scss */
+/* line 150, src/sass/components/_style.scss */
 .ecore-progress > nav {
   position: absolute;
   top: 0;
@@ -174,7 +192,7 @@ hr {
   left: 0;
 }
 
-/* line 136, src/sass/components/_style.scss */
+/* line 157, src/sass/components/_style.scss */
 .ecore-progress > nav > a {
   position: absolute;
   top: 0;
@@ -189,17 +207,17 @@ hr {
   background: #333;
 }
 
-/* line 150, src/sass/components/_style.scss */
+/* line 171, src/sass/components/_style.scss */
 .ecore-progress > nav > a > span {
   display: none;
 }
 
-/* line 154, src/sass/components/_style.scss */
+/* line 175, src/sass/components/_style.scss */
 .ecore-progress > nav > a:hover {
   border-color: #fff;
 }
 
-/* line 158, src/sass/components/_style.scss */
+/* line 179, src/sass/components/_style.scss */
 .ecore-progress > nav > a:hover > span {
   display: block;
   opacity: 0.6;

@@ -12,6 +12,9 @@ body {
 
 h1 {
     color: $white;
+    background: -webkit-linear-gradient(left, $white, $grey-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 2rem;
     font-weight: 500;
     letter-spacing: -0.01rem;
@@ -20,6 +23,9 @@ h1 {
 
 h2 {
     color: $white;
+    background: -webkit-linear-gradient(left, $white, $grey-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 1.4rem;
     font-weight: 400;
     letter-spacing: -0.01rem;
@@ -34,9 +40,17 @@ p a {
     }
 }
 
-header span {
-    font-size: 0.75rem;
-    padding-top: 0.3rem;
+header {
+    span {
+        font-size: 0.75rem;
+        padding-top: 0.3rem;
+    }
+
+    a {
+        background: -webkit-linear-gradient(left, $blue-very-light, $blue-dark);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 hr {
@@ -44,9 +58,16 @@ hr {
     border-color: $grey-dark;
 }
 
-.btn-secondary {
-    border-color: $grey-dark;
-    background-color: $grey-dark;
+.btn {
+    &.btn-primary {
+        background: -webkit-linear-gradient(left, $blue-very-light, $blue-dark);
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+    }
+    &.btn-secondary {
+        border-color: $grey-dark;
+        background-color: $grey-dark;
+    }
 }
 
 .navbar {
