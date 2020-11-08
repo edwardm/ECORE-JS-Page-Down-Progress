@@ -41,6 +41,12 @@ p a {
 }
 
 header {
+    &.navbar {
+        border-bottom: 1px solid $grey-very-dark;
+        background: $black;
+        box-shadow: 0 0 1rem $black;
+    }
+
     span {
         font-size: 0.75rem;
         padding-top: 0.3rem;
@@ -68,12 +74,6 @@ hr {
         border-color: $grey-dark;
         background-color: $grey-dark;
     }
-}
-
-.navbar {
-    border-bottom: 1px solid $grey-very-dark;
-    background: $black;
-    box-shadow: 0 0 1rem $black;
 }
 
 .jumbotron {

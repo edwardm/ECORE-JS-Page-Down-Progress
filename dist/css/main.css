@@ -54,41 +54,41 @@ p a:hover {
 }
 
 /* line 44, src/sass/components/_style.scss */
+header.navbar {
+  border-bottom: 1px solid #222;
+  background: #000;
+  -webkit-box-shadow: 0 0 1rem #000;
+          box-shadow: 0 0 1rem #000;
+}
+
+/* line 50, src/sass/components/_style.scss */
 header span {
   font-size: 0.75rem;
   padding-top: 0.3rem;
 }
 
-/* line 49, src/sass/components/_style.scss */
+/* line 55, src/sass/components/_style.scss */
 header a {
   background: -webkit-linear-gradient(left, #3898ff, #0069d9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* line 56, src/sass/components/_style.scss */
+/* line 62, src/sass/components/_style.scss */
 hr {
   margin: 10rem 0;
   border-color: #333;
 }
 
-/* line 62, src/sass/components/_style.scss */
+/* line 68, src/sass/components/_style.scss */
 .btn.btn-primary {
   background: -webkit-linear-gradient(left, #3898ff, #0069d9);
 }
 
-/* line 67, src/sass/components/_style.scss */
+/* line 73, src/sass/components/_style.scss */
 .btn.btn-secondary {
   border-color: #333;
   background-color: #333;
-}
-
-/* line 73, src/sass/components/_style.scss */
-.navbar {
-  border-bottom: 1px solid #222;
-  background: #000;
-  -webkit-box-shadow: 0 0 1rem #000;
-          box-shadow: 0 0 1rem #000;
 }
 
 /* line 79, src/sass/components/_style.scss */
