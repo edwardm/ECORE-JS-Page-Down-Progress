@@ -1,34 +1,52 @@
-# ECORE-JS-Page-Down-Progress
+# ECORE JS Page Down Progress
 
-## Summary
+A lightweight, vanilla JavaScript plugin that builds section navigation and a
+scroll-progress indicator from your page content. It is intended for long-form
+pages such as documentation and articles.
 
-This vanilla JS plug-in shows a navigation element that also acts as a progression bar as you scroll through the page. The UI consists of two main items: The navigation, which contains marker links to different parts of the page, and the progression bar, which grows as you scroll through the page. This UI plugin can be helpful for lengthy pages that contain many sections of content, such as those found in documentation websites.
+## Usage
 
-The nav element has two flavors of styling: attached to the top of the page, or fixed to the right of the windows, although applying proper styling techniques can override these settings to come up with more innovative ways of presentation.
+Add `ecore-section` to each section, and `ecore-title` to the heading that
+should appear in the navigation:
 
-## What's so special?
-
-The navigation and progress elements will automatically build itself out. Meaning the user just needs to define the "sections" via the unique class selector, and the JS will detect these objects, calculate measurements, build DOM elements and construct the UI on it's own.
-
-And of course, the user can style the look and placement of the bar as needed. These can be a helpful tool for documentation websites, or any pages containing many chapters/sections.
-
-## Getting Started
-
-```
-$ git clone https://github.com/edwardm/ECORE-JS-Page-Down-Progress.git
+```html
+<section class="ecore-section">
+  <h2 class="ecore-title">Getting started</h2>
+  <p>Your section content.</p>
+</section>
 ```
 
-```npm
-$ npm install
+Add the progress track once per page. The script creates its links inside the
+navigation element and assigns IDs to sections that do not already have one:
+
+```html
+<aside class="ecore-progress ecore-progress-right">
+  <div
+    class="ecore-progress-bg"
+    role="progressbar"
+    aria-label="Page scroll progress"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+  ></div>
+  <nav aria-label="Page sections"></nav>
+</aside>
 ```
 
-## Notes
+Include `dist/css/main.css` and `dist/js/ecore-page-down-progress.js` in your
+page. The CSS in this repository styles the demonstration; customize it or
+provide your own styles for the same markup.
 
--   TO-DO: Bug when window resizes, one of the anchors loses offset positioning
--   TO-DO: Styling support for the navigation progress bar in horizontal format
--   TO-DO: Better styling support for the navigation progress bar for mobile devices
--   TO-DO: Better tooltip support for the navigation links, may incorporate Boostrap tooltip with Popper JS for viewport edge detection and placement
+## Development
+
+```sh
+npm install
+npm run build
+```
+
+Run `npm run watch` to rebuild the distribution files and serve the demo while
+developing. Generated files are written to `dist/`.
 
 ## License
 
-The code is available under the [MIT License](LICENSE.md).
+Available under the [MIT License](LICENSE.md).

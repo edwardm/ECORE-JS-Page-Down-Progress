@@ -1,156 +1,151 @@
 /* jshint esversion: 6 */
 
-let viewportWidth;
-let viewportHeight;
-let windowHeight;
-let windowScrollOffset;
-let ecoreProgressBarHeight;
-let ecoreSectionsCount;
-let ecoreSectionOffsetTop;
-let ecoreSectionClass = ".ecore-section";
-let ecoreTitleClass = ".ecore-title";
-let ecoreProgressClass = ".ecore-progress";
-let ecoreProgressBarBg;
-let ecoreNavTarget;
-let ecoreSectionTitle;
+(function () {
+    "use strict";
 
-document.addEventListener("DOMContentLoaded", function () {
-    // the main function
-    // check for dimensions, placements and scroll listener
-    // build out the UI
-    function ecoreProgressNav() {
-        // detect viewport dimensions
-        viewportHeight = Math.max(
-            document.documentElement.clientHeight || 0,
-            window.innerHeight || 0
-        );
-        windowHeight = Math.max(document.documentElement.scrollHeight);
-        viewportWidth = Math.max(
-            document.documentElement.clientWidth || 0,
-            window.innerWidth || 0
-        );
-        console.log(
-            "viewportHeight: " +
-                viewportHeight +
-                ", windowHeight: " +
-                windowHeight +
-                ", viewportWidth: " +
-                viewportWidth
-        );
+    const sectionSelector = ".ecore-section";
+    const titleSelector = ".ecore-title";
+    const progressSelector = ".ecore-progress";
 
-        // detect scrolling for the ecoreProgressBar() function
-        window.addEventListener("scroll", function () {
-            ecoreProgressBar();
+    function initializeProgressNavigation() {
+        const progress = document.querySelector(progressSelector);
+        const navigation = progress && progress.querySelector("nav");
+        const progressBackground =
+            progress && progress.querySelector(".ecore-progress-bg");
+
+        if (!progress || !navigation || !progressBackground) {
+            return;
+        }
+
+        const sections = Array.from(document.querySelectorAll(sectionSelector));
+        const navigationItems = [];
+        const fragment = document.createDocumentFragment();
+
+        sections.forEach(function (section, index) {
+            const title = section.querySelector(titleSelector);
+            const titleText = title ? title.textContent.trim() : "";
+            const label =
+                titleText ||
+                section.getAttribute("aria-label") ||
+                "Section " + (index + 1);
+
+            if (!section.id || document.getElementById(section.id) !== section) {
+                let id = "ecore-section-" + (index + 1);
+                let suffix = 1;
+
+                while (
+                    document.getElementById(id) &&
+                    document.getElementById(id) !== section
+                ) {
+                    suffix += 1;
+                    id = "ecore-section-" + (index + 1) + "-" + suffix;
+                }
+
+                section.id = id;
+            }
+
+            section.setAttribute("data-ecore-section", "ecore-section-" + index);
+
+            const link = document.createElement("a");
+            const linkLabel = document.createElement("span");
+            link.href = "#" + section.id;
+            link.setAttribute("aria-label", label);
+            link.setAttribute("data-ecore-section", "ecore-section-" + (index + 1));
+            linkLabel.textContent = label;
+            link.appendChild(linkLabel);
+            fragment.appendChild(link);
+
+            navigationItems.push({
+                link: link,
+                section: section
+            });
         });
 
-        // detect progress bar height, if vertical
-        ecoreProgressBarHeight = document.querySelector(ecoreProgressClass)
-            .offsetHeight;
-        console.log("ecoreProgressBarHeight: " + ecoreProgressBarHeight);
+        navigation.textContent = "";
+        navigation.appendChild(fragment);
 
-        // detect sections count
-        ecoreSectionsCount = document.querySelectorAll(".ecore-section").length;
-        console.log("ecoreSectionsCount: " + ecoreSectionsCount);
+        function getScrollRange() {
+            const bodyHeight = document.body ? document.body.scrollHeight : 0;
+            const pageHeight = Math.max(
+                document.documentElement.scrollHeight,
+                bodyHeight
+            );
 
-        // apply section indexes
-        document
-            .querySelectorAll(ecoreSectionClass)
-            .forEach((ecoreSection, index) => {
-                ecoreSection.setAttribute(
-                    "data-ecore-section",
-                    "ecore-section-" + index
-                );
+            return Math.max(0, pageHeight - window.innerHeight);
+        }
+
+        function updateNavigationPositions() {
+            const scrollRange = getScrollRange();
+
+            navigationItems.forEach(function (item) {
+                const sectionTop =
+                    item.section.getBoundingClientRect().top + window.pageYOffset;
+                let position = 0;
+
+                if (scrollRange) {
+                    position = Math.min(
+                        100,
+                        Math.max(0, (sectionTop / scrollRange) * 100)
+                    );
+                }
+
+                item.link.style.top = position + "%";
             });
+        }
 
-        // nav anchor building
-        const sectionArray = document.querySelectorAll(".ecore-section");
-        for (const [i, el] of sectionArray.entries()) {
-            // console.log(i, el);
-
-            // build the anchor
-            ecoreNavTarget = document.querySelector(
-                ecoreProgressClass + " > nav"
+        function renderProgress() {
+            const scrollRange = getScrollRange();
+            const scrollOffset = Math.min(
+                scrollRange,
+                Math.max(0, window.pageYOffset || document.documentElement.scrollTop)
             );
-            ecoreNavTarget.append(document.createElement("a"));
+            let progressPercent = 0;
 
-            // get the section title
-            ecoreSectionTitle = el.querySelector(ecoreTitleClass).innerHTML;
+            if (scrollRange) {
+                progressPercent = (scrollOffset / scrollRange) * 100;
+            }
 
-            // get the section y offset
-            ecoreSectionOffsetTop = el.offsetTop;
-            console.log(
-                "data-ecore-section-" +
-                    [i + 1] +
-                    " top offset: " +
-                    ecoreSectionOffsetTop
-            );
-
-            // call the build nav function, passing index and selector
-            // apply anchor attributes and inline css
-            ecoreBuildNav(
-                i,
-                document.querySelectorAll(
-                    ".ecore-progress > nav > a:nth-child(" + [i + 1] + ")"
-                )
+            progressBackground.style.height = progressPercent + "%";
+            progressBackground.setAttribute(
+                "aria-valuenow",
+                Math.round(progressPercent)
             );
         }
-    }
-    ecoreProgressNav();
 
-    // apply progress bar bg, on it's own since it
-    // needs to be called on resize and scroll events
-    function ecoreProgressBar() {
-        windowScrollOffset =
-            window.pageYOffset ||
-            (
-                document.documentElement ||
-                document.body.parentNode ||
-                document.body
-            ).scrollTop;
-        // console.log("windowScrollOffset: " + windowScrollOffset);
+        let scrollFrame = 0;
+        function scheduleProgressUpdate() {
+            if (scrollFrame) {
+                return;
+            }
 
-        ecoreProgressBarBg = document.querySelector(".ecore-progress-bg");
-        ecoreProgressBarBg.style.height =
-            windowScrollOffset / windowHeight / Math.pow(10, -2) + 4 + "%";
-    }
-    ecoreProgressBar();
-
-    // build the nav, pass index and target element
-    function ecoreBuildNav(i, el) {
-        el.forEach((ecoreProgressAnchor) => {
-            ecoreProgressAnchor.setAttribute(
-                "data-ecore-section",
-                "ecore-section-" + [i + 1]
-            );
-            ecoreProgressAnchor.setAttribute(
-                "aria-label",
-                ecoreSectionTitle
-                // "ecore-section-" + [i + 1] // TO-DO set actual title
-            );
-            ecoreProgressAnchor.setAttribute(
-                "data-offset",
-                ecoreSectionOffsetTop
-            );
-            ecoreProgressAnchor.innerHTML =
-                "<span>" + ecoreSectionTitle + "</span>";
-            ecoreProgressAnchor.style.top =
-                ecoreSectionOffsetTop / windowHeight / Math.pow(10, -2) + "%"; // Math.pow to move the decimal point
-            ecoreProgressAnchor.addEventListener("click", (e) => {
-                console.log(
-                    ecoreProgressAnchor.getAttribute("data-ecore-section"),
-                    ecoreProgressAnchor.getAttribute("data-offset")
-                );
-                window.scrollTo({
-                    top: ecoreProgressAnchor.getAttribute("data-offset") - 150,
-                    behavior: "smooth",
-                });
+            scrollFrame = window.requestAnimationFrame(function () {
+                scrollFrame = 0;
+                renderProgress();
             });
+        }
+
+        updateNavigationPositions();
+        renderProgress();
+
+        window.addEventListener("scroll", scheduleProgressUpdate, {
+            passive: true
+        });
+        window.addEventListener("resize", function () {
+            updateNavigationPositions();
+            scheduleProgressUpdate();
+        });
+        window.addEventListener("load", function () {
+            updateNavigationPositions();
+            scheduleProgressUpdate();
         });
     }
 
-    // recalculation needed for the progress bar UI
-    window.addEventListener("resize", function () {
-        ecoreProgressNav();
-        ecoreProgressBar();
-    });
-});
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            initializeProgressNavigation
+        );
+    } else {
+        initializeProgressNavigation();
+    }
+})();

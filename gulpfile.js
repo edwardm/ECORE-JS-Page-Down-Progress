@@ -84,7 +84,7 @@ var uglify = require('gulp-terser');
 var optimizejs = require('gulp-optimize-js');
 
 // Styles
-var sass = require('gulp-sass');
+var sass = require('gulp-sass')(require('sass'));
 var postcss = require('gulp-postcss');
 var prefix = require('autoprefixer');
 var minify = require('cssnano');
