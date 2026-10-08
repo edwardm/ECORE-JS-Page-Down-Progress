@@ -1,243 +1,208 @@
-/*! project-name v0.0.1 | (c) 2021 YOUR NAME | MIT License | http://link-to-your-git-repo.com */
+/*! ecore-js-page-down-progress v0.0.1 | (c) 2026 Edward Margallo | MIT License | https://github.com/edwardm/ECORE-JS-Page-Down-Progress.git */
 /**
  * @section Base Styles
  */
 /**
- * @section Variable Styles
+ * @section Theme Variables
  */
-/* colors */
-/* mixins and extends */
-/**
- * @section Main Styles
- */
-/* line 5, src/sass/components/_style.scss */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-  color: #999;
-  background: #222;
-  margin-bottom: 10rem;
+  line-height: 1.6;
 }
 
-/* line 13, src/sass/components/_style.scss */
-h1 {
-  color: #fff;
-  background: -webkit-linear-gradient(left, #fff, #999);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: -0.01rem;
-  margin-top: 3rem;
+a {
+  color: inherit;
 }
 
-/* line 24, src/sass/components/_style.scss */
-h2 {
-  color: #fff;
-  background: -webkit-linear-gradient(left, #fff, #999);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 1.4rem;
-  font-weight: 400;
-  letter-spacing: -0.01rem;
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #55a8ff;
+  outline-offset: 3px;
 }
 
-/* line 34, src/sass/components/_style.scss */
-p a {
-  color: #fff;
+/**
+ * @section Demo and Progress Navigation
+ */
+body {
+  color: #c3cbd5;
+  background: #15191f;
 }
 
-/* line 37, src/sass/components/_style.scss */
-p a:hover {
+.site-header {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #343d49;
+  background: rgba(21, 25, 31, 0.96);
+}
+.site-header a {
+  color: #55a8ff;
   text-decoration: none;
-  color: #999;
+}
+.site-header p {
+  margin: 0;
+  font-size: 0.875rem;
 }
 
-/* line 44, src/sass/components/_style.scss */
-header.navbar {
-  border-bottom: 1px solid #222;
-  background: #000;
-  -webkit-box-shadow: 0 0 1rem #000;
-          box-shadow: 0 0 1rem #000;
+.hero {
+  padding: clamp(4rem, 12vw, 9rem) 1.5rem;
+  border-bottom: 1px solid #343d49;
+  background: linear-gradient(135deg, #090b0e, #1e242d);
+}
+.hero > div {
+  max-width: 68rem;
+  margin: 0 auto;
+}
+.hero p {
+  max-width: 48rem;
 }
 
-/* line 50, src/sass/components/_style.scss */
-header span {
-  font-size: 0.75rem;
-  padding-top: 0.3rem;
+h1,
+h2 {
+  color: #f4f7fb;
+  line-height: 1.2;
 }
 
-/* line 55, src/sass/components/_style.scss */
-header a {
-  background: -webkit-linear-gradient(left, #3898ff, #0069d9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+h1 {
+  max-width: 42rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
-/* line 62, src/sass/components/_style.scss */
-hr {
-  margin: 10rem 0;
-  border-color: #333;
+h2 {
+  font-size: 1.5rem;
 }
 
-/* line 68, src/sass/components/_style.scss */
-.btn.btn-primary {
-  background: -webkit-linear-gradient(left, #3898ff, #0069d9);
+.sections {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 8rem;
 }
 
-/* line 73, src/sass/components/_style.scss */
-.btn.btn-secondary {
-  border-color: #333;
-  background-color: #333;
+.ecore-section {
+  min-height: 55vh;
+  padding: 3rem 0;
+  scroll-margin-top: 5rem;
+}
+.ecore-section + .ecore-section {
+  border-top: 1px solid #343d49;
 }
 
-/* line 79, src/sass/components/_style.scss */
-.jumbotron {
-  padding: 10rem 0;
-  margin-bottom: 10rem;
-  border-bottom: 1px solid #333;
-  background: black;
-  background: linear-gradient(135deg, black 0%, #111111 50%);
-}
-
-/* line 90, src/sass/components/_style.scss */
-.jumbotron .container {
-  padding-right: 10%;
-}
-
-/* line 95, src/sass/components/_style.scss */
 .ecore-progress {
-  z-index: 1;
   position: fixed;
-  display: block;
-  opacity: 0.5;
-  transition: opacity 0.75s ease-out;
-  -moz-transition: opacity 0.75s ease-out;
-  -webkit-transition: opacity 0.75s ease-out;
-  -o-transition: opacity 0.75s ease-out;
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  /* make all the titles show when the progress bar 
-       is hovered on, for better usability */
+  z-index: 3;
+  top: 6rem;
+  right: 1.5rem;
+  bottom: 2rem;
+  width: 0.75rem;
+  border: 1px solid #343d49;
+  border-radius: 1rem;
+  background: #1e242d;
+  opacity: 0.65;
+  -webkit-transition: opacity 180ms ease;
+  transition: opacity 180ms ease;
 }
-
-/* line 108, src/sass/components/_style.scss */
-.ecore-progress.ecore-progress-right {
-  top: 80px;
-  right: 30px;
-  bottom: 30px;
-  width: 10px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  background: #000;
-}
-
-/* line 118, src/sass/components/_style.scss */
-.ecore-progress .ecore-progress-bg {
-  content: " ";
-  z-index: 0;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  left: 2px;
-  height: 25%;
-  border-radius: 10px;
-  background: #0069d9;
-}
-
-/* line 130, src/sass/components/_style.scss */
-.ecore-progress:hover {
+.ecore-progress:hover, .ecore-progress:focus-within {
   opacity: 1;
 }
-
-/* line 133, src/sass/components/_style.scss */
-.ecore-progress:hover > .ecore-progress-right {
-  border-color: #666;
-}
-
-/* line 137, src/sass/components/_style.scss */
-.ecore-progress:hover > .ecore-progress-bg {
-  background: #0078f8;
-}
-
-/* line 144, src/sass/components/_style.scss */
-.ecore-progress:hover > nav > a > span {
-  display: block;
-  opacity: 0.6;
-  position: absolute;
-  z-index: -1;
-  top: -125%;
-  right: 15px;
-  white-space: nowrap;
-  width: auto;
-  font-size: 0.75rem;
-  padding: 0.25rem 1rem 0.25rem 0.75rem;
-  border-radius: 30px 30px 30px 30px;
-  border: 1px solid #333;
-  background-color: #000;
-  -webkit-box-shadow: #000;
-          box-shadow: #000;
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  /* in variables */
-  border-color: #333;
-}
-
-/* line 150, src/sass/components/_style.scss */
-.ecore-progress > nav {
+.ecore-progress .ecore-progress-bg {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
   left: 0;
+  border-radius: inherit;
+  background: -webkit-gradient(linear, left top, left bottom, from(#55a8ff), to(#1476d4));
+  background: linear-gradient(#55a8ff, #1476d4);
+  -webkit-transition: height 100ms linear;
+  transition: height 100ms linear;
 }
-
-/* line 157, src/sass/components/_style.scss */
-.ecore-progress > nav > a {
+.ecore-progress nav {
   position: absolute;
-  top: 0;
-  left: -1px;
-  display: block;
-  overflow: visible;
-  width: 10px;
-  height: 10px;
-  cursor: pointer;
-  border-radius: 10px;
-  border: 1px solid #999;
-  background: #333;
+  inset: 0;
 }
-
-/* line 171, src/sass/components/_style.scss */
-.ecore-progress > nav > a > span {
+.ecore-progress nav a {
+  position: absolute;
+  left: 50%;
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 1px solid #c3cbd5;
+  border-radius: 50%;
+  background: #15191f;
+}
+.ecore-progress nav a span {
+  position: absolute;
+  right: 1rem;
   display: none;
-}
-
-/* line 175, src/sass/components/_style.scss */
-.ecore-progress > nav > a:hover {
-  border-color: #fff;
-}
-
-/* line 179, src/sass/components/_style.scss */
-.ecore-progress > nav > a:hover > span {
-  display: block;
-  opacity: 0.6;
-  position: absolute;
-  z-index: -1;
-  top: -125%;
-  right: 15px;
-  white-space: nowrap;
-  width: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 70vw;
+  padding: 0.25rem 0.65rem;
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
+  border: 1px solid #343d49;
+  border-radius: 1rem;
+  color: #f4f7fb;
+  background: #1e242d;
   font-size: 0.75rem;
-  padding: 0.25rem 1rem 0.25rem 0.75rem;
-  border-radius: 30px 30px 30px 30px;
-  border: 1px solid #333;
-  background-color: #000;
-  -webkit-box-shadow: #000;
-          box-shadow: #000;
-  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-  /* in variables */
-  opacity: 1;
-  color: #fff;
-  border: 1px solid #999;
+}
+.ecore-progress nav a:hover, .ecore-progress nav a:focus-visible {
+  border-color: #f4f7fb;
+}
+.ecore-progress nav a:hover span, .ecore-progress nav a:focus-visible span {
+  display: block;
+}
+.ecore-progress:hover nav span, .ecore-progress:focus-within nav span {
+  display: block;
+}
+
+@media (max-width: 40rem) {
+  .site-header {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+  .site-header p {
+    text-align: right;
+  }
+  .ecore-progress {
+    right: 0.75rem;
+  }
+  .sections {
+    padding-right: 2rem;
+    padding-left: 1rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ecore-progress,
+  .ecore-progress-bg {
+    -webkit-transition: none;
+    transition: none;
+  }
 }

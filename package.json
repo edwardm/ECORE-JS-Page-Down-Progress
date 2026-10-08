@@ -1,22 +1,20 @@
 {
-	"name": "project-name",
+	"name": "ecore-js-page-down-progress",
 	"version": "0.0.1",
-	"description": "A description for your project.",
-	"main": "./dist/your-main-js-file.js",
+	"description": "A vanilla JavaScript section navigation and page progress indicator.",
+	"main": "./dist/js/ecore-page-down-progress.js",
 	"author": {
-		"name": "YOUR NAME",
-		"url": "http://link-to-your-website.com"
+		"name": "Edward Margallo",
+		"url": "https://edwardmargallo.com/"
 	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "http://link-to-your-git-repo.com"
+		"url": "https://github.com/edwardm/ECORE-JS-Page-Down-Progress.git"
 	},
-	"boilerplate": {
-		"version": "2.2.6",
-		"author": "Chris Ferdinandi",
-		"url": "https://gomakethings.com",
-		"repo": "http://github.com/cferdinandi/gulp-boilerplate"
+	"scripts": {
+		"build": "gulp",
+		"watch": "gulp watch"
 	},
 	"browserslist": [
 		"last 2 versions",
@@ -33,18 +31,14 @@
 		"gulp-header": "2.0.5",
 		"gulp-jshint": "2.1.0",
 		"gulp-optimize-js": "1.1.0",
+		"gulp-postcss": "^9.0.0",
 		"gulp-rename": "1.4.0",
-		"gulp-sass": "4.0.2",
+		"gulp-sass": "^5.1.0",
 		"gulp-svgmin": "2.1.0",
 		"gulp-terser": "1.1.7",
 		"jshint": "^2.12.0",
 		"jshint-stylish": "2.2.1",
 		"lazypipe": "1.0.1",
-		"node-sass": "^4.14.1"
-	},
-	"dependencies": {
-		"dot-prop": "^6.0.1",
-		"gulp-postcss": "^9.0.0",
-		"lodash.template": "^4.5.0"
+		"sass": "^1.77.8"
 	}
 }

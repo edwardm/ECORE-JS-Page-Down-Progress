@@ -1,36 +1,11 @@
 /**
- * @section Variable Styles
+ * @section Theme Variables
  */
 
-/* colors */
-
-$black: #000;
-$grey-very-dark: #222;
-$grey-dark: #333;
-$grey-medium: #666;
-$grey-light: #999;
-$grey-very-light: #ccc;
-$grey-really-light: #eee;
-$white: #fff;
-$blue-very-light: #3898ff;
-$blue-light: #0078f8;
-$blue-dark: #0069d9;
-
-/* mixins and extends */
-
-@mixin nav-a-span-hover {
-    opacity: 0.6;
-    position: absolute;
-    z-index: -1;
-    top: -125%;
-    right: 15px;
-    white-space: nowrap;
-    width: auto;
-    font-size: 0.75rem;
-    padding: 0.25rem 1rem 0.25rem 0.75rem;
-    border-radius: 30px 30px 30px 30px;
-    border: 1px solid $grey-dark;
-    background-color: $black;
-    box-shadow: $black;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-}
+$color-background: #15191f;
+$color-surface: #1e242d;
+$color-border: #343d49;
+$color-text: #c3cbd5;
+$color-heading: #f4f7fb;
+$color-accent: #55a8ff;
+$color-accent-dark: #1476d4;

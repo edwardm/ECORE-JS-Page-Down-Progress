@@ -1,245 +1,188 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A lightweight, class-driven page progress indicator and section navigator."
+    >
+    <title>ECORE Page Down Progress</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="#">ECORE Page Down Progress</a>
+      <p>
+        A vanilla JavaScript plugin by
+        <a href="https://edwardmargallo.com/" target="_blank" rel="noopener noreferrer">
+          Edward Margallo
+        </a>
+      </p>
+    </header>
 
-<head>
-	<title>ECORE-JS-Page-Down-Progress</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" href="boostrap.min.css">
-	<!-- Project CSS -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <h1 id="page-title">A simple guide to page progress navigation</h1>
+          <p>
+            This lightweight plugin builds a section navigator from your
+            headings and tracks how far readers have scrolled through the page.
+            Add the section and title classes to your content, then style the
+            progress element to fit your site.
+          </p>
+          <p>
+            <a href="https://github.com/edwardm/ECORE-JS-Page-Down-Progress">
+              View the project on GitHub
+            </a>
+          </p>
+        </div>
+      </section>
 
-<body>
+      <div class="sections">
+        <section class="ecore-section">
+          <h2 class="ecore-title">Getting started</h2>
+          <p>
+            Add the <code>ecore-section</code> class to each content section
+            and the <code>ecore-title</code> class to its heading. The plugin
+            reads those headings to create accessible navigation links.
+          </p>
+          <p>
+            Place an <code>ecore-progress</code> element on the page with a
+            child progress background and navigation element.
+          </p>
+        </section>
 
-	<header class="navbar navbar-expand-md fixed-top">
-		<a class="navbar-brand" href="#">ECORE-JS-Page-Down-Progress</a>
-		<span class="ml-auto">A plugin by <a href="https://edwardmargallo.com/" target="_blank">Edward
-				Margallo</a></span>
-	</header>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Automatic navigation</h2>
+          <p>
+            Navigation markers are created in document order, using each
+            section title as its accessible name. The plugin supplies section
+            IDs when your sections do not already have one.
+          </p>
+          <p>
+            Select a marker to follow its section link. Browser history and
+            keyboard navigation work like ordinary page links.
+          </p>
+        </section>
 
-	<main role="main">
+        <section class="ecore-section">
+          <h2 class="ecore-title">Scroll progress</h2>
+          <p>
+            The filled track represents the reader's scroll position across
+            the page. Scroll updates are grouped into animation frames to avoid
+            unnecessary layout work.
+          </p>
+          <p>
+            Section markers are positioned along the track and recalculated
+            when the viewport or page dimensions change.
+          </p>
+        </section>
 
-		<div class="jumbotron">
-			<div class="container">
-				<h1>A UI Element for Scrolldown Progress</h1>
-				<p>This vanilla JS plug-in shows a navigation element that also acts as a progression bar as you scroll
-					through the page. The UI consists of two main items: The navigation, which contains marker links to
-					different parts of the page, and the progression bar, which grows as you scroll through the page.
-					This UI plugin can be helpful for lengthy pages that contain many sections of content, such as those
-					found in documentation websites.
-				</p>
-				<p>The nav element has two flavors of styling: attached to the top of the page, or fixed to the right of
-					the windows, although applying proper styling techniques can override these settings to come up with
-					more innovative ways of presentation.</p>
-				<p>This plugin was created by <a href="https://edwardmargallo.com/" target="_blank">Edward Margallo</a>.
-				</p>
-				<p><strong>Scroll down to continue or </strong><a
-						class="btn btn-primary btn-sm mt-2 ml-2 align-baseline"
-						href="https://github.com/edwardm/ECORE-JS-Page-Down-Progress" target="_blank" role="button">View
-						on Github &raquo;</a></p>
-			</div>
-		</div>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Accessible by default</h2>
+          <p>
+            Generated controls are real links with labels derived from the
+            matching section headings. They can be reached and activated with
+            a keyboard.
+          </p>
+          <p>
+            Keep headings descriptive and unique enough to help readers
+            understand the structure of your page.
+          </p>
+        </section>
 
-		<div class="container">
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 1</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 2 - This title appears in the nav element</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 3</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 4</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 5</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 6</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 7</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 8</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 9</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. </p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-			<div class="row ecore-section">
-				<div class="col-md-12">
-					<h2 class="ecore-title">Section 10</h2>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus.
-						Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
-					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus.
-						Fusce dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.Donec id elit non mi porta gravida at eget metus. Fusce
-						dapibus, tellus ac cursus commodo, tortor
-						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada
-						magna mollis euismod. Donec sed odio dui.</p>
-					<p><a class="btn btn-secondary btn-sm" href="#" role="button">Back to Top</a></p>
-				</div>
-			</div>
-			<hr>
-		</div>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Customize the appearance</h2>
+          <p>
+            The progress element uses the <code>ecore-progress</code> class,
+            while <code>ecore-progress-right</code> places it along the right
+            edge in this example.
+          </p>
+          <p>
+            Override its positioning and colors with your own CSS to create a
+            horizontal bar or another layout that suits your project.
+          </p>
+        </section>
 
-		<div class="ecore-progress ecore-progress-right">
-			<div class="ecore-progress-bg"></div>
-			<!-- this nav element will automatically populate based on the main content being observed -->
-			<!-- the section container and section container title classes must be applied -->
-			<!-- don't put extra syntax inside, as the indexing of items will throw the nth child off -->
-			<nav></nav>
-		</div>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Responsive layouts</h2>
+          <p>
+            The demonstration adjusts its spacing for narrow screens. The
+            plugin itself measures the document and viewport after resizing so
+            its markers stay aligned.
+          </p>
+          <p>
+            Test your layout at the breakpoints used by your site, especially
+            when section content changes significantly across screen sizes.
+          </p>
+        </section>
 
-	</main>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Long-form content</h2>
+          <p>
+            This pattern works well for documentation, articles, and other
+            pages with multiple named sections. Navigation is built from the
+            content, so there is no separate list to keep in sync.
+          </p>
+          <p>
+            Sections without a matching title use their accessible label or a
+            simple generated label as a fallback.
+          </p>
+        </section>
 
-	<!-- Project Scripts -->
-	<script src="js/ecore-page-down-progress.js"></script>
-	<!-- <script>
-		// var overrides for custom classes
-		ecoreSectionClass = ".ecore-section";
-		ecoreTitleClass = ".ecore-title";
-	</script> -->
-</body>
+        <section class="ecore-section">
+          <h2 class="ecore-title">Smooth scrolling</h2>
+          <p>
+            The demo enables smooth anchor scrolling in CSS and uses scroll
+            margins so linked headings are not hidden below its sticky header.
+          </p>
+          <p>
+            If your site prefers reduced motion, the demo respects the user's
+            system setting and disables smooth scrolling.
+          </p>
+        </section>
 
+        <section class="ecore-section">
+          <h2 class="ecore-title">Build the project</h2>
+          <p>
+            Install the development dependencies and run
+            <code>npm run build</code> to generate the files in
+            <code>dist</code>. Use <code>npm run watch</code> while developing.
+          </p>
+          <p>
+            The distribution folder contains the demo page, compiled styles,
+            and both regular and minified JavaScript builds.
+          </p>
+        </section>
+
+        <section class="ecore-section">
+          <h2 class="ecore-title">Ready to use</h2>
+          <p>
+            Add the classes shown above to your page, include the generated
+            stylesheet and script, and place the progress container in your
+            document.
+          </p>
+          <p>
+            For installation details and the complete markup example, see the
+            project README.
+          </p>
+        </section>
+      </div>
+
+      <aside class="ecore-progress ecore-progress-right">
+        <div
+          class="ecore-progress-bg"
+          role="progressbar"
+          aria-label="Page scroll progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        ></div>
+        <nav aria-label="Page sections"></nav>
+      </aside>
+    </main>
+
+    <script src="js/ecore-page-down-progress.js"></script>
+  </body>
 </html>
