@@ -22,7 +22,7 @@
         const navigationItems = [];
         const fragment = document.createDocumentFragment();
 
-        sections.forEach((function (section, index) {
+        sections.forEach(function (section, index) {
             const title = section.querySelector(titleSelector);
             const titleText = title ? title.textContent.trim() : "";
             const label =
@@ -60,7 +60,7 @@
                 link: link,
                 section: section
             });
-        }));
+        });
 
         navigation.textContent = "";
         navigation.appendChild(fragment);
@@ -78,7 +78,7 @@
         function updateNavigationPositions() {
             const scrollRange = getScrollRange();
 
-            navigationItems.forEach((function (item) {
+            navigationItems.forEach(function (item) {
                 const sectionTop =
                     item.section.getBoundingClientRect().top + window.pageYOffset;
                 let position = 0;
@@ -91,7 +91,7 @@
                 }
 
                 item.link.style.top = position + "%";
-            }));
+            });
         }
 
         function renderProgress() {
@@ -119,10 +119,10 @@
                 return;
             }
 
-            scrollFrame = window.requestAnimationFrame((function () {
+            scrollFrame = window.requestAnimationFrame(function () {
                 scrollFrame = 0;
                 renderProgress();
-            }));
+            });
         }
 
         updateNavigationPositions();
@@ -131,14 +131,14 @@
         window.addEventListener("scroll", scheduleProgressUpdate, {
             passive: true
         });
-        window.addEventListener("resize", (function () {
+        window.addEventListener("resize", function () {
             updateNavigationPositions();
             scheduleProgressUpdate();
-        }));
-        window.addEventListener("load", (function () {
+        });
+        window.addEventListener("load", function () {
             updateNavigationPositions();
             scheduleProgressUpdate();
-        }));
+        });
     }
 
     if (document.readyState === "loading") {
