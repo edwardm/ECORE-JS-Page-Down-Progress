@@ -44,8 +44,9 @@ npm install
 npm run build
 ```
 
-Run `npm run watch` to rebuild the distribution files and serve the demo while
-developing. Generated files are written to `dist/`.
+Run `npm run watch` to rebuild the distribution files when source files change
+and serve the demo at `http://localhost:8080`. Generated files are written to
+`dist/`.
 
 ## License
 
